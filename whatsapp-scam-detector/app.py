@@ -3,11 +3,15 @@ import pandas as pd
 import pickle
 import numpy as np
 
-# Load model and vectorizer using pickle
-with open('scam_model.pkl', 'rb') as f:
+import os
+
+# Load model and vectorizer using pickle with safe paths
+model_path = os.path.join(os.path.dirname(__file__), 'scam_model.pkl')
+with open(model_path, 'rb') as f:
     model = pickle.load(f)
 
-with open('tfidf_vectorizer.pkl', 'rb') as f:
+vectorizer_path = os.path.join(os.path.dirname(__file__), 'tfidf_vectorizer.pkl')
+with open(vectorizer_path, 'rb') as f:
     vectorizer = pickle.load(f)
 
 # 1. 🔍 Real-Time Message Input
